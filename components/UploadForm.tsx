@@ -9,13 +9,13 @@ const UploadForm: React.FC = () => {
 
     const checkStatus = async (taskId: string) => {
         try {
-            const response = await fetch(`https://my60ztcfsugwqx-5000.proxy.runpod.net/status/${taskId}`);
+            const response = await fetch(`https://awzqa7xlqw9iby-5000.proxy.runpod.net/status/${taskId}`);
             if (!response.ok) {
                 throw new Error(`Status check failed: ${response.status}`);
             }
             const data = await response.json();
             if (data.status === 'completed') {
-                setVideoUrl(`https://my60ztcfsugwqx-5000.proxy.runpod.net/result/${taskId}`);
+                setVideoUrl(`https://awzqa7xlqw9iby-5000.proxy.runpod.net/result/${taskId}`);
             } else if (data.status === 'failed') {
                 throw new Error(data.error || 'Processing failed');
             }
@@ -47,7 +47,7 @@ const UploadForm: React.FC = () => {
         const formData = new FormData(event.currentTarget);
 
         try {
-            const response = await fetch('https://my60ztcfsugwqx-5000.proxy.runpod.net/process', {
+            const response = await fetch('https://awzqa7xlqw9iby-5000.proxy.runpod.net/process', {
                 method: 'POST',
                 body: formData,
             });
